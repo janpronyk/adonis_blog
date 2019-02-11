@@ -5,11 +5,19 @@
 
 @section('content')
 
-    @each(post in posts)
+    <ul class="list-group">
 
-        <h3>{{ post.title }}</h3>
-        <p>{{ post.content }}</p>
-    
-    @endeach
+        @each(post in posts)
+
+            <li class="list-group-item mb-3">
+                <a href="/posts/{{ post.id }}">
+                    <h3>{{ _('capitalize', post.title) }}</h3>
+                </a>
+                <p>{{  _('truncate', post.body) }}</p>
+            </li>
+        
+        @endeach
+        
+    </ul>
   
 @endsection

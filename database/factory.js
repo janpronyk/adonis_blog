@@ -19,3 +19,13 @@
 //     username: faker.username()
 //   }
 // })
+
+const Factory = use('Factory')
+
+Factory.blueprint('App/Models/Post', async (faker) => {
+  return {
+    title: faker.sentence(),
+    slug: faker.sentence(),
+    body: faker.paragraph(),
+  }
+})
