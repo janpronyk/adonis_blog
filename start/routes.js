@@ -18,11 +18,15 @@ const Route = use('Route')
 
 Route.on('/').render('home')
 
+Route.on('/signup').render('auth.signup').as('auth.signup')
+Route.on('/login').render('auth.login').as('auth.login')
+Route.post('/signup', 'UserController.create').validator('CreateUser')
+
 Route.get('/posts', 'PostController.index')
 Route.get('/posts/add', 'PostController.add')
 Route.get('/posts/:slug', 'PostController.details')
 Route.get('/posts/:slug/edit', 'PostController.edit')
 
 Route.put('/posts/:slug', 'PostController.update')
-Route.delete('/posts/:slug', 'PostController.delete').as('posts.delete')
+Route.get('/posts/delete/:slug', 'PostController.destroy').as('posts.delete')
 Route.post('/posts', 'PostController.store').validator('Post')

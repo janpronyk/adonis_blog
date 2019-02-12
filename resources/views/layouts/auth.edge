@@ -7,15 +7,11 @@
     <title> @!section('title', 'Adonis 4.0 Blog')</title>
 
     {{ style('https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css')}}
-    
+
     @!section('extracss')
 
 </head>
 <body>
-
-  <header>
-    @include('includes.navbar')
-  </header>
 
   <div class="container">
         @!section('content')      
@@ -27,6 +23,7 @@
     {{ script('https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js')}}
 
     @!section('extrascripts')
+
     <script>
       feather.replace()
     </script>

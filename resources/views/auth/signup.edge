@@ -1,0 +1,63 @@
+@layout('layouts.auth')
+
+@section('extracss')
+{{ style('forms') }}
+@endsection
+
+@section('title')
+Adonis 4.0 Blog - Sign up
+@endsection
+
+
+@section('content')
+
+    <div class="card mt-5">
+
+        <div class="card-body">
+
+            <h2 class="card-title text-center mb-4">Sign up</h2>
+
+            <form action="{{ route('UserController.create') }}" method="POST">
+                {{ csrfField() }}
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username"  class="form-control" value="{{ old('username', '') }}">
+                    @if(hasErrorFor('username'))
+                        <span class="text-danger">
+                            {{ getErrorFor('username') }}
+                        </span>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email"  class="form-control" value="{{ old('email', '') }}">
+                    @if(hasErrorFor('email'))
+                        <span class="text-danger">
+                            {{ getErrorFor('email') }}
+                        </span>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password"  class="form-control" name="password">
+                    @if(hasErrorFor('password'))
+                        <span class="text-danger">
+                            {{ getErrorFor('password') }}
+                        </span>
+                    @endif
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary mt-3 mb-3">Join now</button>
+                    <p>Or back to <a href="{{ route('auth.login') }}" class="card-link">log in</a></p>
+                </div>
+            </form>
+
+            
+        </div>
+    </div>
+
+@endsection

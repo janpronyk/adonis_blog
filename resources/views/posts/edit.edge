@@ -7,7 +7,7 @@
 
     <h2>Edit Post</h2>
 
-    <form action="{{ '/posts/' + post.id + '?_method=PUT' }}" method="POST">
+    <a action="{{ '/posts/' + post.id + '?_method=PUT' }}" method="POST">
         {{ csrfField() }}
 
         <div class="form-group">
@@ -43,11 +43,7 @@
                 </span>
             @endif
 
-        </div>
-
-        {{--  TODO: Change id to slug after implementing correct slugs  --}}
-        <form action="{{ route('posts.delete'), { slug: post.id } }}">
-        </form>
+        </div>    
 
         <button class="btn btn-primary" type="submit">Add post</button>
 
