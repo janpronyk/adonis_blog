@@ -20,4 +20,9 @@ Route.on('/').render('home')
 
 Route.get('/posts', 'PostController.index')
 Route.get('/posts/add', 'PostController.add')
-Route.get('/posts/:id', 'PostController.details')
+Route.get('/posts/:slug', 'PostController.details')
+Route.get('/posts/:slug/edit', 'PostController.edit')
+
+Route.put('/posts/:slug', 'PostController.update')
+Route.delete('/posts/:slug', 'PostController.delete').as('posts.delete')
+Route.post('/posts', 'PostController.store').validator('Post')

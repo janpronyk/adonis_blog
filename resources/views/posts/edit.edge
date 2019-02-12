@@ -5,9 +5,9 @@
 
     @include('includes.backToPostsBtn')
 
-    <h2>Add Post</h2>
+    <h2>Edit Post</h2>
 
-    <form action="/posts" method="POST">
+    <form action="{{ '/posts/' + post.id + '?_method=PUT' }}" method="POST">
         {{ csrfField() }}
 
         <div class="form-group">
@@ -17,7 +17,7 @@
                     name="title" 
                     class="form-control"
                     placeholder="Post title"
-                    value="{{ old('title', '') }}" />
+                    value="{{ old('title', post.title ) }}" />
             
             @if(hasErrorFor('title'))
                 <span class="text-danger">
@@ -35,7 +35,7 @@
                         class="form-control"
                         rows="10"
                         placeholder="Post content..."
-                        value="{{ old('body', '') }}"></textarea>
+                        >{{ old('body', post.body) }}</textarea>
 
             @if(hasErrorFor('body'))
                 <span class="text-danger">
@@ -45,7 +45,10 @@
 
         </div>
 
-        <button class="btn btn-danger" type="reset">Reset Form</button>
+        {{--  TODO: Change id to slug after implementing correct slugs  --}}
+        <form action="{{ route('posts.delete'), { slug: post.id } }}">
+        </form>
+
         <button class="btn btn-primary" type="submit">Add post</button>
 
     </form>
